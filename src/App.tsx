@@ -12,45 +12,12 @@ interface post {
 function App() {
 
   const [forumList, setforumList] = useState<post[]>([]);
-  const [person, setPerson] = useState<string>('');
-
-  // useEffect(() => {
-  //   getPerson();
-  // }, []);
 
   const getComment = (commentObj: { message: string, link:string }): void => {
     const newData = [...forumList];
     newData.push(commentObj);
     setforumList(newData);
   }
-
-  function getPerson() {
-    fetch('http://localhost:3001')
-      .then(response => {
-        return response.text();
-      })
-      .then(data => {
-        setPerson(data);
-      });
-  }
-  // function createPerson() {
-  //   let name = prompt('Enter merchant name');
-  //   let email = prompt('Enter merchant email');
-  //   fetch('http://localhost:3001/merchants', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({name, email}),
-  //   })
-  //     .then(response => {
-  //       return response.text();
-  //     })
-  //     .then(data => {
-  //       alert(data);
-  //       getMerchant();
-  //     });
-  // }
 
   return (
     <div className="app">
